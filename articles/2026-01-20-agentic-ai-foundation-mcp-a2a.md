@@ -1,5 +1,5 @@
 ---
-title: "【衝撃】OpenAI・Anthropic・Googleが手を組んだ！Agentic AI Foundation誕生でAIエージェント開発が激変する"
+title: "【衝撃】OpenAI・Anthropic・Googleが協力！MCP・A2Aプロトコル完全解説"
 emoji: "🤝"
 type: "tech"
 topics: ["ai", "mcp", "aiagent", "llm", "claudecode"]
