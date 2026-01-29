@@ -1,0 +1,21 @@
+{
+  "mcpServers": {
+    "qiita": {
+      "command": "npx",
+      "args": ["@2bo/qiita-mcp-server"],
+      "env": {
+        "QIITA_API_TOKEN": "7f66da87e1f94ef0e4c7e6d3b4e02f3326d27244"
+      }
+    },
+    "twitter": {
+      "command": "npx",
+      "args": ["@enescinar/twitter-mcp"],
+      "env": {
+        "TWITTER_API_KEY": "YOUR_API_KEY",
+        "TWITTER_API_SECRET": "YOUR_API_SECRET",
+        "TWITTER_ACCESS_TOKEN": "YOUR_ACCESS_TOKEN",
+        "TWITTER_ACCESS_TOKEN_SECRET": "YOUR_ACCESS_TOKEN_SECRET"
+      }
+    }
+  }
+}
