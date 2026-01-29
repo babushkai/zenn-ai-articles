@@ -3,7 +3,7 @@ title: "【速報】Anthropic Coworkが変えるAI時代の働き方｜7日分�
 emoji: "⚡"
 type: "tech"
 topics: ["claudeai", "cowork", "自動化", "生産性", "ai"]
-published: false
+published: true
 ---
 
 **「7日分の仕事が15分で終わった」**

@@ -3,7 +3,7 @@ title: "【禁断の問い】AIと資本主義、富の集中か豊穣か｜ダ�
 emoji: "🔱"
 type: "idea"
 topics: ["ai", "資本主義", "ubi", "哲学", "未来社会"]
-published: false
+published: true
 ---
 
 > **「歴史は、勝者によって書かれる」**

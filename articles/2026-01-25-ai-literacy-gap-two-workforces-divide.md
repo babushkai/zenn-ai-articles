@@ -3,7 +3,7 @@ title: "【警告】6倍の生産性格差が生まれている｜AIを使う者
 emoji: "⚡"
 type: "idea"
 topics: ["ai", "生産性", "キャリア", "リスキリング", "格差"]
-published: false
+published: true
 ---
 
 **あなたは今、どちら側にいますか？**

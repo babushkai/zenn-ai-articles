@@ -3,7 +3,7 @@ title: "【覚醒せよ】AIがコードを書く時代に「人間がプログ�
 emoji: "💊"
 type: "idea"
 topics: ["プログラミング", "ai", "哲学", "未来", "教育"]
-published: false
+published: true
 ---
 
 > **「現実とは何だ？」**

@@ -3,7 +3,7 @@ title: "【2026年最前線】A2A + MCP + ハイブリッドメモリで構築�
 emoji: "🧠"
 type: "tech"
 topics: ["ai", "マルチエージェント", "mcp", "a2a", "アーキテクチャ"]
-published: false
+published: true
 ---
 
 **「単一エージェントの時代は終わった」**

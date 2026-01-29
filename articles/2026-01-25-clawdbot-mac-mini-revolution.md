@@ -3,7 +3,7 @@ title: "【話題沸騰】Mac Mini + Clawdbotで「自分専用のJarvis」を�
 emoji: "🦞"
 type: "tech"
 topics: ["ai", "macos", "claudeai", "自動化", "パーソナルai"]
-published: false
+published: true
 ---
 
 **「1週間で1億8000万トークン消費した。でも後悔はしていない。」**

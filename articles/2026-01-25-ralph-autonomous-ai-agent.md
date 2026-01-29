@@ -3,7 +3,7 @@ title: "【完全自動化】寝てる間にAIがコード書いてくれる「R
 emoji: "🤖"
 type: "tech"
 topics: ["ai", "自動化", "claudecode", "エージェント", "開発効率化"]
-published: false
+published: true
 ---
 
 **「朝起きたら、PRDに書いた機能が全部実装されてた」**

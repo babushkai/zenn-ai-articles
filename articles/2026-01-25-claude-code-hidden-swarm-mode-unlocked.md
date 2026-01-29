@@ -3,7 +3,7 @@ title: "【衝撃】Claude Codeに「隠し機能」が存在した｜npx一発�
 emoji: "🔓"
 type: "tech"
 topics: ["claudecode", "ai", "隠し機能", "エージェント", "swarm"]
-published: false
+published: true
 ---
 
 **「え、これ公式がわざと隠してたやつじゃん...」**

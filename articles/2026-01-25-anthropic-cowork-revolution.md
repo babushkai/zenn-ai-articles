@@ -3,7 +3,7 @@ title: "【2026年速報】Anthropic「Cowork」が衝撃すぎる件｜もうPC
 emoji: "🤯"
 type: "tech"
 topics: ["ai", "claudecode", "anthropic", "生成ai", "aiエージェント"]
-published: false
+published: true
 ---
 
 **「AIにPC作業を丸投げしたい」**
