@@ -58,6 +58,11 @@
 - **Time:** Daily 9:00 AM
 - **Last Run:** Jan 21, 2026
 
+## BUG FIX (Jan 29, 2026)
+**Issue:** Scheduler failing with `No such file or directory`
+**Cause:** Claude CLI path changed from `.local/bin` to `.nvm/versions/node/v24.12.0/bin`
+**Fix:** Updated plist with correct path and reloaded scheduler
+
 ## Git Status
 All articles committed and pushed to `origin/main`
 
