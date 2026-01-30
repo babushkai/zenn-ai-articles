@@ -51,7 +51,18 @@
       "Bash(head:*)",
       "Bash(for f in 2026-01-25-*.md 2026-01-26-*.md)",
       "Bash(do sed -i '' 's/published: false/published: true/' \"$f\")",
-      "Bash(done)"
+      "Bash(done)",
+      "mcp__qiita__get_my_qiita_articles",
+      "Bash(git -C /Users/dsuke/Projects/scheduledclaude log --oneline -3)",
+      "Bash(for i in {8..10})",
+      "Bash(do)",
+      "Bash(for:*)",
+      "Bash(do launchctl start com.claude.schedule.zenn-ai-article-writer)",
+      "WebFetch(domain:skills.sh)",
+      "WebFetch(domain:agents.md)",
+      "WebFetch(domain:github.blog)",
+      "WebFetch(domain:docs.swarms.world)",
+      "WebFetch(domain:www.moltbook.com)"
     ]
   },
   "enableAllProjectMcpServers": true,
