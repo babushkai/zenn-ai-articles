@@ -62,7 +62,8 @@
       "WebFetch(domain:agents.md)",
       "WebFetch(domain:github.blog)",
       "WebFetch(domain:docs.swarms.world)",
-      "WebFetch(domain:www.moltbook.com)"
+      "WebFetch(domain:www.moltbook.com)",
+      "Bash(xargs:*)"
     ]
   },
   "enableAllProjectMcpServers": true,
