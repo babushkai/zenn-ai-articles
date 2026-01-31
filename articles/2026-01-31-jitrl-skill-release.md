@@ -1,12 +1,12 @@
 ---
-title: "【OSS公開】Claude Codeを「学習するAI」に変えるJitRLスキルをリリースしました"
+title: "【OSS公開】Claude Codeを「学習するAI」に変えるJitRLプラグイン - ワンコマンドでインストール"
 emoji: "🚀"
 type: "tech"
-topics: ["claudecode", "ai", "oss", "継続学習", "python"]
+topics: ["claudecode", "ai", "oss", "プラグイン", "python"]
 published: true
 ---
 
-## Claude Codeに「記憶」を与えるスキルを公開しました
+## Claude Codeに「記憶」を与えるプラグインを公開しました
 
 **GitHub**: https://github.com/babushkai/jitrl-skill
 
@@ -16,7 +16,25 @@ Claude Codeを毎日使っていて、こんな経験はありませんか？
 - 「このプロジェクト、毎回同じセットアップ手順を教えてる…」
 - 「前回失敗したアプローチ、また試そうとしてる…」
 
-**JitRLスキル**は、この問題を解決します。
+**JitRLプラグイン**は、この問題を解決します。
+
+## インストール（2コマンド）
+
+```bash
+# 1. マーケットプレイスを追加
+/plugin marketplace add babushkai/jitrl-skill
+
+# 2. プラグインをインストール
+/plugin install jitrl@babushkai-jitrl-skill
+```
+
+**以上です。** Hooksの設定もファイルのコピーも不要。
+
+### 前提条件
+
+```bash
+pip install faiss-cpu numpy
+```
 
 ## どう動くのか
 
@@ -40,21 +58,15 @@ Claude Codeを毎日使っていて、こんな経験はありませんか？
 └─────────────────────────────────────────────────────┘
 ```
 
-## インストール（30秒）
+## 使えるコマンド
 
-```bash
-# 1. スキルをクローン
-git clone https://github.com/babushkai/jitrl-skill ~/.claude/skills/jitrl
+インストール後、以下のコマンドが利用可能：
 
-# 2. 依存関係インストール
-pip install faiss-cpu numpy
-
-# 3. プロジェクトで初期化
-cd /your/project
-python3 ~/.claude/skills/jitrl/scripts/jitrl.py init
-```
-
-**これだけで完了です。**
+| コマンド | 説明 |
+|----------|------|
+| `/jitrl:init` | 現在のプロジェクトを初期化 |
+| `/jitrl:stats` | 経験の統計を表示 |
+| `/jitrl:search [query]` | 類似経験を検索 |
 
 ## 技術的な仕組み
 
@@ -68,17 +80,17 @@ python3 ~/.claude/skills/jitrl/scripts/jitrl.py init
 | Action | Claudeの行動 | Edit、Write、Bash等 |
 | Outcome | 結果 | 成功/失敗、ユーザーフィードバック |
 
-### 2. ベクトル検索
+### 2. 自動Hook統合
 
-Faissを使った高速な類似検索：
+プラグインが自動的に3つのHookを登録：
 
-```python
-# 現在のプロンプトを埋め込み
-query_vector = embedder.embed("型エラーを修正して")
+| Hook | タイミング | 役割 |
+|------|-----------|------|
+| UserPromptSubmit | プロンプト送信時 | 類似経験を検索・注入 |
+| Stop | Claude応答完了時 | インタラクション詳細を記録 |
+| SessionEnd | セッション終了時 | 評価してストレージに保存 |
 
-# 類似経験を検索（コサイン類似度）
-results = index.search(query_vector, k=5)
-```
+**手動でhooks.jsonを編集する必要はありません。**
 
 ### 3. アドバンテージ計算
 
@@ -109,86 +121,55 @@ Advantage(Edit) = 平均スコア(Edit) - 全体平均スコア
 | エラー修正の試行回数 | 3-5回 | **1-2回** |
 | 失敗パターンの再発 | 頻繁 | **ほぼゼロ** |
 
-## Claude Code Hooksとの統合
+## なぜ「プラグイン」形式なのか
 
-JitRLは3つのHookイベントを使用：
+以前のバージョンは「スキル」として配布していましたが、[Claude Code Plugins](https://code.claude.com/docs/en/plugins)形式に変換しました。
 
-```json
-{
-  "hooks": {
-    "UserPromptSubmit": [{
-      "hooks": [{
-        "type": "command",
-        "command": "python3 ~/.claude/skills/jitrl/scripts/hooks/on_prompt.py"
-      }]
-    }],
-    "Stop": [{
-      "hooks": [{
-        "type": "command",
-        "command": "python3 ~/.claude/skills/jitrl/scripts/hooks/on_stop.py"
-      }]
-    }],
-    "SessionEnd": [{
-      "hooks": [{
-        "type": "command",
-        "command": "python3 ~/.claude/skills/jitrl/scripts/hooks/on_session_end.py"
-      }]
-    }]
-  }
-}
+### メリット
+
+| 項目 | スキル形式 | プラグイン形式 |
+|------|-----------|---------------|
+| インストール | git clone + 設定編集 | **2コマンド** |
+| Hooks設定 | 手動 | **自動** |
+| アップデート | git pull | **/plugin update** |
+| アンインストール | 手動削除 | **/plugin uninstall** |
+
+## プラグイン構造
+
 ```
-
-| Hook | タイミング | 役割 |
-|------|-----------|------|
-| UserPromptSubmit | プロンプト送信時 | 類似経験を検索・注入 |
-| Stop | Claude応答完了時 | インタラクション詳細を記録 |
-| SessionEnd | セッション終了時 | 評価してストレージに保存 |
-
-## CLIコマンド
-
-```bash
-# 統計を表示
-jitrl stats
-
-# 類似経験を検索
-jitrl search "async awaitのエラー"
-
-# 経験をエクスポート
-jitrl export experiences.json
-
-# プロジェクトの経験をクリア
-jitrl clear --confirm
+jitrl-skill/
+├── .claude-plugin/
+│   ├── plugin.json      # プラグインマニフェスト
+│   └── marketplace.json # 検索用
+├── skills/
+│   └── jitrl-memory/
+│       └── SKILL.md     # メインスキル定義
+├── commands/
+│   ├── init.md          # /jitrl:init
+│   ├── stats.md         # /jitrl:stats
+│   └── search.md        # /jitrl:search
+├── hooks/
+│   └── hooks.json       # 自動登録されるHooks
+└── scripts/
+    ├── jitrl.py         # コア実装
+    └── hooks/           # Hookハンドラー
 ```
-
-## なぜ「スキル」として実装したのか
-
-Claude Codeの[Skills機能](https://code.claude.com/docs/en/skills)には大きなメリットがあります：
-
-1. **インストールが簡単** - `git clone`するだけ
-2. **アップデートが簡単** - `git pull`するだけ
-3. **カスタマイズ可能** - config.yamlで調整
-4. **他のスキルと共存** - 競合しない
 
 ## 論文ベースの実装
 
-このスキルは["JitRL: Just-in-Time Reinforcement Learning for LLM Agent"](https://arxiv.org/abs/2501.18510)論文に基づいています。
+このプラグインは["JitRL: Just-in-Time Reinforcement Learning for LLM Agent"](https://arxiv.org/abs/2501.18510)論文に基づいています。
 
 論文のキーアイデア：
 - **勾配更新なし** - ファインチューニング不要
 - **経験リプレイ** - 過去の経験を再利用
 - **アドバンテージ重み付け** - 成功パターンを優先
 
-私の実装では：
-- Faissでベクトル検索を高速化
-- Claude Code Hooksで自動収集
-- コンテキスト注入でin-context学習
-
 ## 今後の予定
 
 - [ ] LLM評価モード（より精密なスコアリング）
 - [ ] クロスプロジェクト学習
 - [ ] Web UI（経験の可視化）
-- [ ] チーム共有機能
+- [ ] 公式マーケットプレイスへの申請
 
 ## コントリビューション歓迎
 
@@ -213,5 +194,5 @@ GitHub: https://github.com/babushkai/jitrl-skill
 
 - **GitHub**: https://github.com/babushkai/jitrl-skill
 - **JitRL論文**: https://arxiv.org/abs/2501.18510
-- **Claude Code Skills**: https://code.claude.com/docs/en/skills
-- **Claude Code Hooks**: https://code.claude.com/docs/en/hooks
+- **Claude Code Plugins**: https://code.claude.com/docs/en/plugins
+- **Claude Code Plugin Marketplace**: https://code.claude.com/docs/en/discover-plugins
