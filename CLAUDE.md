@@ -25,16 +25,38 @@ published: true  # false for drafts
 本文...
 ```
 
-## File Naming
+## File Naming (CRITICAL)
 
-- Articles: `articles/{slug}.md` (slug: lowercase, hyphens, no spaces)
-- Example: `articles/2026-01-20-multi-agent-systems.md`
+**Zenn slug requirements - MUST follow:**
+- Slug = filename without `.md` extension
+- Length: **12-50 characters** (STRICT LIMIT)
+- Characters: `a-z`, `0-9`, `-`, `_` only
+- Format: `YYYY-MM-DD-short-topic.md`
+
+**Examples:**
+```
+✅ 2026-01-20-multi-agent-systems.md (32 chars)
+✅ 2026-01-20-claude-code-tips.md (28 chars)
+❌ 2026-01-20-comprehensive-guide-to-building-multi-agent-systems-with-claude.md (TOO LONG)
+```
+
+**Before creating any article file:**
+1. Count slug length (filename minus `.md`)
+2. If > 50 chars, shorten the topic portion
+3. Keep date prefix `YYYY-MM-DD-` (11 chars), leaving 39 chars max for topic
 
 ## Workflow
 
 1. Create article in `articles/` directory
-2. Commit and push to `main` branch
-3. Zenn.dev auto-deploys within minutes
+2. **Validate filename is 12-50 characters**
+3. Commit and push to `main` branch
+4. Zenn.dev auto-deploys within minutes
+
+## Rate Limits
+
+- Zenn has a 24-hour posting limit (exact number undisclosed)
+- If rate-limited, articles deploy after 24 hours
+- For bulk migrations, contact Zenn support for temporary increase
 
 ## Topics Focus
 
