@@ -80,7 +80,15 @@
       "mcp__qiita__get_qiita_markdown_rules",
       "Bash(sw_vers:*)",
       "Bash(claude:*)",
-      "Bash(git mv:*)"
+      "Bash(git mv:*)",
+      "Bash(do name=\"$f%.md\")",
+      "Bash(len=$#ame)",
+      "Bash(if [ $len -gt 50 ])",
+      "Bash(then echo \"❌ $len: $name\")",
+      "Bash(elif [ $len -lt 12 ])",
+      "Bash(then echo \"⚠️ $len: $name \\(too short\\)\")",
+      "Bash(else echo \"✅ $len: $name\")",
+      "Bash(fi)"
     ]
   },
   "enableAllProjectMcpServers": true,
