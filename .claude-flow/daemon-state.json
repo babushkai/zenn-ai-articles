@@ -3,36 +3,39 @@
   "startedAt": "2026-01-29T16:18:38.477Z",
   "workers": {
     "map": {
-      "runCount": 0,
-      "successCount": 0,
+      "runCount": 1,
+      "successCount": 1,
       "failureCount": 0,
-      "averageDurationMs": 0,
-      "nextRun": "2026-01-29T16:18:38.477Z",
+      "averageDurationMs": 1,
+      "lastRun": "2026-01-31T11:55:31.060Z",
+      "nextRun": "2026-01-31T12:12:09.500Z",
       "isRunning": false
     },
     "audit": {
+      "runCount": 3,
+      "successCount": 0,
+      "failureCount": 3,
+      "averageDurationMs": 0,
+      "lastRun": "2026-01-31T12:38:08.354Z",
+      "nextRun": "2026-01-31T12:16:19.313Z",
+      "isRunning": false
+    },
+    "optimize": {
       "runCount": 1,
       "successCount": 0,
       "failureCount": 1,
       "averageDurationMs": 0,
-      "lastRun": "2026-01-24T12:18:34.145Z",
-      "nextRun": "2026-01-29T16:20:38.477Z",
-      "isRunning": false
-    },
-    "optimize": {
-      "runCount": 0,
-      "successCount": 0,
-      "failureCount": 0,
-      "averageDurationMs": 0,
-      "nextRun": "2026-01-29T16:22:38.477Z",
+      "lastRun": "2026-01-31T12:06:19.294Z",
+      "nextRun": "2026-01-31T12:12:09.499Z",
       "isRunning": false
     },
     "consolidate": {
-      "runCount": 0,
-      "successCount": 0,
+      "runCount": 1,
+      "successCount": 1,
       "failureCount": 0,
-      "averageDurationMs": 0,
-      "nextRun": "2026-01-29T16:24:38.477Z",
+      "averageDurationMs": 12,
+      "lastRun": "2026-01-31T11:55:31.057Z",
+      "nextRun": "2026-01-31T12:25:31.059Z",
       "isRunning": false
     },
     "testgaps": {
@@ -40,8 +43,8 @@
       "successCount": 0,
       "failureCount": 0,
       "averageDurationMs": 0,
-      "nextRun": "2026-01-29T16:26:38.477Z",
-      "isRunning": false
+      "nextRun": "2026-01-31T12:15:43.555Z",
+      "isRunning": true
     },
     "predict": {
       "runCount": 0,
@@ -127,5 +130,5 @@
       }
     ]
   },
-  "savedAt": "2026-01-29T16:18:38.478Z"
+  "savedAt": "2026-01-31T12:38:08.355Z"
 }
