@@ -67,6 +67,38 @@ published: true  # false for drafts
 - Prompt engineering
 - RAG systems
 
+## Reference Links Format (CRITICAL for Qiita)
+
+**DO NOT use markdown link format for references.**
+
+Qiita does not render markdown links properly in some cases. Use plain text format:
+
+```markdown
+## 参考リンク
+
+Article Title Here
+
+https://example.com/full-url-here
+
+Another Article Title
+
+https://example.com/another-url
+```
+
+**WRONG (DO NOT USE):**
+```markdown
+- [Article Title](https://example.com/url)
+```
+
+**CORRECT:**
+```markdown
+Article Title
+
+https://example.com/url
+```
+
+This ensures URLs are clickable on both Zenn and Qiita.
+
 ## Preview Locally
 
 ```bash
